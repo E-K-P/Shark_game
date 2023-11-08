@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float interval;
+    public GameObject spawner;
 
     void Start()
     {
+        var interval = Random.Range(3f, 5f);
         StartCoroutine(spawnEnemy(interval));
     }
 
@@ -16,12 +17,10 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(interval);
         GameObject enemy = EnemyPooler.SharedInstance.GetPooledEnemy();
             if (enemy != null) {
-                enemy.transform.position = new Vector3(Random.Range(-10f, 10), Random.Range(-10f, 10f), 0);
+                enemy.transform.position = spawner.transform.position;
                 enemy.transform.rotation = Quaternion.identity;
                 enemy.SetActive(true);
             }
-        
-        
         //Get(enemy, new Vector3(Random.Range(-10f, 10), Random.Range(-10f, 10f), 0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval));
     }

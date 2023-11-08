@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public float speed;
-    public float health;
-    public float damage;
+    /*public int health;
+    public int damage;*/
 
     void Update()
     {
