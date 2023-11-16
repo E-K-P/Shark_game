@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        var interval = Random.Range(3f, 5f);
+        var interval = Random.Range(4f, 5f);
         StartCoroutine(spawnEnemy(interval));
     }
 
