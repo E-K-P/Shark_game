@@ -10,6 +10,7 @@ public class BulletBehavior : MonoBehaviour
     {
         if(col.gameObject.tag == "Enemy")
         {
+            //if the tag of collission is enemy, destroy bullet
             col.gameObject.SetActive(false);
             Destroy(bullet);
         }

@@ -8,20 +8,20 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        var interval = Random.Range(4f, 5f);
+        var interval = Random.Range(4f, 5f); //creates an enemy randomly between 4 and 5 seconds
         StartCoroutine(spawnEnemy(interval));
     }
 
-    private IEnumerator spawnEnemy(float interval)
+    private IEnumerator spawnEnemy(float interval) //Starts a loop that every interval creates an enemy
     {
         yield return new WaitForSeconds(interval);
-        GameObject enemy = EnemyPooler.SharedInstance.GetPooledEnemy();
+        GameObject enemy = EnemyPooler.SharedInstance.GetPooledEnemy(); //Calls an enemy from the EnemyPooler script
             if (enemy != null) {
+                //Applies position, rotation and activates the called enemy
                 enemy.transform.position = spawner.transform.position;
                 enemy.transform.rotation = Quaternion.identity;
                 enemy.SetActive(true);
             }
-        //Get(enemy, new Vector3(Random.Range(-10f, 10), Random.Range(-10f, 10f), 0), Quaternion.identity);
         StartCoroutine(spawnEnemy(interval));
     }
 }

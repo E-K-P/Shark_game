@@ -11,15 +11,16 @@ public class EnemyPooler : MonoBehaviour
 
     void Awake()
     {
-        SharedInstance = this;
+        SharedInstance = this; //creates an instance other scripts can refer to
     }
 
     void Start()
     {
-        pooledEnemies = new List<GameObject>();
+        pooledEnemies = new List<GameObject>(); //creates a list that holds the enemies
         GameObject tmp;
-        for(int i = 0; i < amountToPool; i++)
+        for(int i = 0; i < amountToPool; i++) //counter for how many enemies have been made
         {
+            //Creates enemy, makes them inactive and adds into the list
             tmp = Instantiate(enemyToPool);
             tmp.SetActive(false);
             pooledEnemies.Add(tmp);
@@ -30,6 +31,7 @@ public class EnemyPooler : MonoBehaviour
     {
         for(int i = 0; i < amountToPool; i++)
         {
+            //Checks for inactive objects
             if(!pooledEnemies[i].activeInHierarchy)
             {
                 return pooledEnemies[i];
