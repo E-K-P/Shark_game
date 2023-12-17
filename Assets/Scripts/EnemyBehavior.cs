@@ -5,15 +5,11 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public float speed;
-    /*public int health;
-    public int damage;*/
 
-    void Update()
+    void FixedUpdate()
     {
-        //Movement towards the player character
-        var player = GameObject.Find("Player");
-        var distance = Vector3.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+	    var player = GameObject.Find("Player");
+        Vector3 dir = (player.transform.position - this.transform.position).normalized;
+        this.GetComponent<Rigidbody2D>().MovePosition(this.transform.position + dir * speed * Time.fixedDeltaTime);
     }
 }

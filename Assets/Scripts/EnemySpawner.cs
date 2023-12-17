@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        var interval = Random.Range(4f, 5f); //creates an enemy randomly between 4 and 5 seconds
+        var interval = 4;
         StartCoroutine(spawnEnemy(interval));
     }
 
