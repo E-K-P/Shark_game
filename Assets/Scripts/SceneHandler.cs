@@ -9,8 +9,4 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadScene("StageOne");
     }
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("StartScene");
-    }
 }
